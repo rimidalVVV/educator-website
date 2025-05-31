@@ -1,8 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Globe, Mail, Phone, MapPin, User, BookOpen, Award, Clock,} from 'lucide-react';
-import ContactForm from './ContactForm';
-import MobileNavigation from './MobileNavigation';
-import './mobile.css';
+
+const ContactForm = ({ translations }) => {
+  const [formData, setFormData] = useState({name: '', email: '', message: ''});
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert('Сообщение отправлено!');
+    setFormData({name: '', email: '', message: ''});
+  };
+
+  return (
+    <form className="contact-form" onSubmit={handleSubmit}>
+      <input className="form-input" type="text" placeholder={translations.name} 
+             value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} />
+      <input className="form-input" type="email" placeholder={translations.email}
+             value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} />
+      <textarea className="form-textarea" placeholder={translations.message}
+                value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} />
+      <button className="form-submit" type="submit">{translations.send}</button>
+    </form>
+  );
+};
 
 const EducatorWebsite = () => {
   const [currentPage, setCurrentPage] = useState('home');
@@ -11,17 +30,29 @@ const EducatorWebsite = () => {
   const [isMobile, setIsMobile] = useState(false);
   
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-      if (window.innerWidth >= 768) {
-        setIsMobileMenuOpen(false);
-      }
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
+  const checkMobile = () => {
+    setIsMobile(window.innerWidth < 768);
+    if (window.innerWidth >= 768) {
+      setIsMobileMenuOpen(false);
+    }
+  };
+  
+  checkMobile();
+  window.addEventListener('resize', checkMobile);
+  return () => window.removeEventListener('resize', checkMobile);
+}, []);
+
+useEffect(() => {
+  if (isMobileMenuOpen) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = 'auto';
+  }
+  
+  return () => {
+    document.body.style.overflow = 'auto';
+  };
+}, [isMobileMenuOpen]);
 
   const translations = {
     ru: {
@@ -530,7 +561,7 @@ const EducatorWebsite = () => {
 .mobile-nav-item {
   display: block;
   width: 100%;
-  padding: 1.25rem 2rem;
+  padding: 1.25rem 2.5rem;
   background: none;
   border: none;
   color: white;
@@ -1082,8 +1113,9 @@ const EducatorWebsite = () => {
           }
 
           .logo {
-            justify-content: flex-start;
-          }
+  justify-content: center;
+  flex: 1;
+}
 
           .logo h1 {
             font-size: 1.5rem;
