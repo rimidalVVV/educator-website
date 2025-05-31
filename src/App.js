@@ -317,18 +317,19 @@ useEffect(() => {
           <div className="page-content">
             <h2>{page.title}</h2>
             <div className="news-list">
-  {page.items.map((item, index) => (
-    <article key={index} className="news-item" onClick={() => window.open('https://sfedu.ru/www/stat_pages22.show?p=SCI/N11620/P', '_blank')}>
-      <div className="news-date">{item.date}</div>
-      <h3>{item.title}</h3>
-      <p>{item.content}</p>
-      <div className="news-link-hint">
-        {language === 'ru' ? 'Нажмите для перехода на сайт ЮФУ' : 'Click to visit SFU website'}
-      </div>
-    </article>
-  ))}
-</div>
-       );
+              {page.items.map((item, index) => (
+                <article key={index} className="news-item" onClick={() => window.open('https://sfedu.ru/www/stat_pages22.show?p=SCI/N11620/P', '_blank')}>
+                  <div className="news-date">{item.date}</div>
+                  <h3>{item.title}</h3>
+                  <p>{item.content}</p>
+                  <div className="news-link-hint">
+                    {language === 'ru' ? 'Нажмите для перехода на сайт ЮФУ' : 'Click to visit SFU website'}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        );
 
       case 'about':
         return (
