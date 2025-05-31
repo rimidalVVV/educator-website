@@ -205,17 +205,25 @@ const EducatorWebsite = () => {
   const renderNavigation = () => {
   if (isMobile) {
     return (
-      <div className="mobile-nav-items">
-        {Object.entries(t.nav).map(([key, value]) => (
-          <button
-            key={key}
-            onClick={() => navigateTo(key)}
-            className={`mobile-nav-item ${currentPage === key ? 'active' : ''}`}
-          >
-            {value}
-          </button>
-        ))}
-      </div>
+      <>
+        <div 
+          className={`mobile-nav-overlay ${isMobileMenuOpen ? 'open' : ''}`}
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+        <div className={`mobile-nav ${isMobileMenuOpen ? 'open' : ''}`}>
+          <div className="mobile-nav-items">
+            {Object.entries(t.nav).map(([key, value]) => (
+              <button
+                key={key}
+                onClick={() => navigateTo(key)}
+                className={`mobile-nav-item ${currentPage === key ? 'active' : ''}`}
+              >
+                {value}
+              </button>
+            ))}
+          </div>
+        </div>
+      </>
     );
   }
   
