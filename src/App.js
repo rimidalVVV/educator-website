@@ -328,7 +328,8 @@ useEffect(() => {
     </article>
   ))}
 </div>
-      
+       );
+
       case 'about':
         return (
           <div className="page-content">
