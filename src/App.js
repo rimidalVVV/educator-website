@@ -398,6 +398,12 @@ useEffect(() => {
                   <h3 className="service-name">{item.service}</h3>
                   <div className="service-price">{item.price}</div>
                   <p className="service-desc">{item.description}</p>
+                <button 
+  className="service-contact-btn"
+  onClick={() => navigateTo('contact')}
+>
+  {language === 'ru' ? 'Записаться' : 'Book Now'}
+</button>
                 </div>
               ))}
             </div>
@@ -998,6 +1004,25 @@ useEffect(() => {
           color: #666;
           line-height: 1.6;
         }
+        .service-contact-btn {
+  background: linear-gradient(135deg, #27ae60, #229954);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+.service-contact-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(39, 174, 96, 0.3);
+  background: linear-gradient(135deg, #229954, #1e8449);
+}
 
         /* Sidebar */
         .sidebar {
