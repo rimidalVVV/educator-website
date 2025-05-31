@@ -1203,9 +1203,12 @@ const EducatorWebsite = () => {
         </main>
 
         <aside className="sidebar">
-          {renderBanner("Добро пожаловать!", "Качественное образование от опытного преподавателя ЮФУ")}
-          {renderTagCloud()}
-        </aside>
+  <div className="banner">
+    <h4>Добро пожаловать!</h4>
+    <p>Качественное образование от опытного преподавателя ЮФУ</p>
+  </div>
+  {renderTagCloud()}
+</aside>
       </div>
 
       {/* Footer */}
