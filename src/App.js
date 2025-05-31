@@ -9,8 +9,7 @@ const EducatorWebsite = () => {
   const [language, setLanguage] = useState('ru');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [formStatus, setFormStatus] = useState('');
-
+  
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
