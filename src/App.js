@@ -1182,16 +1182,8 @@ const EducatorWebsite = () => {
         </div>
       </header>
 
-      {/* Mobile Navigation */}
-{isMobile && (
-  <MobileNavigation 
-    isOpen={isMobileMenuOpen}
-    onClose={() => setIsMobileMenuOpen(false)}
-    currentPage={currentPage}
-    onNavigate={navigateTo}
-    translations={t.nav}
-  />
-)}
+    {/* Mobile Navigation - встроенная версия */}
+{isMobile && renderNavigation()}
 
       {/* Main Content */}
       <div className="main-container">
